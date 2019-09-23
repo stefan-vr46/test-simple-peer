@@ -52,20 +52,21 @@ export class AppComponent implements OnInit , AfterViewInit {
       console.log('data: ' + data)
     });
 
-    this.p.on('stream', stream => {
-      // got remote video stream, now let's show it in a video tag
-
-      this.myVideo.nativeElement.srcObject = stream;
-      this.myVideo.nativeElement.play();
-      console.log(stream);
-    });
+    // this.p.on('stream', stream => {
+    //   // got remote video stream, now let's show it in a video tag
+    //
+    //   this.myVideo.nativeElement.srcObject = stream;
+    //   this.myVideo.nativeElement.play();
+    //   console.log(stream);
+    // });
 
     this.p.on('track', (track, stream) => {
       console.log('track');
     });
     this.p.on('stream', stream => {
-      console.log('stream');
-
+      console.log('stream', stream);
+      this.myVideo.nativeElement.srcObject = stream;
+      this.myVideo.nativeElement.play();
     });
 
   }
@@ -84,8 +85,8 @@ export class AppComponent implements OnInit , AfterViewInit {
 
       that.stream = stream;
 
-      that.myVideo.nativeElement.srcObject = stream;
-      video.play();
+      // that.myVideo.nativeElement.srcObject = stream;
+      // video.play();
       console.log(stream);
     }, function() {});
 
