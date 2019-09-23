@@ -1,0 +1,13 @@
+<form>
+  <textarea id="incoming"></textarea>
+  <button type="submit">submit</button>
+</form>
+<textarea name="" id="" cols="30" rows="10" [(ngModel)]="msg"></textarea>
+<button (click)="send()">Send msg</button>
+<button (click)="turnOnCamera()">Turn On Camera</button>
+<button (click)="turnOfCamera()">Turn Off Camera</button>
+<button (click)="addStreamToConnection()">Add camera</button>
+<button (click)="removeStreamFromConnection()">Remove camera</button>
+<pre id="outgoing"></pre>
+
+<video #myvideo></video>
