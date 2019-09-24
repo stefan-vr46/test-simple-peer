@@ -76,21 +76,32 @@ export class AppComponent implements OnInit , AfterViewInit {
     this.msg = '';
   }
 
+  gotDevices(){
+
+  }
+
   turnOnCamera(){
     let that = this;
     const video = that.myVideo.nativeElement;
+    // this.n.mediaDevices.enumerateDevices()
+    //   .then((gotDevices) =>  {
+    //     console.log(gotDevices);
+    //     const devices =  gotDevices.filter((item) => item.kind === 'videoinput');
+    //     return devices;
+    //   })
+    //   .then((getStream) => {
+    //     console.log(getStream[0]);
+    //   })
+    //   .catch((handleError) => console.log(handleError));
 
     this.n.getUserMedia = (this.n.getUserMedia || this.n.webkitGetUserMedia || this.n.mozGetUserMedia || this.n.msGetUserMedia);
-    this.n.getUserMedia({video: true, Audio: true}, function(stream) {
-
+    this.n.getUserMedia({ video: false, audio: true }, function(stream) {
       that.stream = stream;
-
       // that.myVideo.nativeElement.srcObject = stream;
       // video.play();
-      console.log(stream);
+      console.log(that.stream.getAudioTracks());
     }, function() {});
 
-    console.log(this.stream);
 
   }
 
@@ -98,22 +109,19 @@ export class AppComponent implements OnInit , AfterViewInit {
     this.myVideo.nativeElement.srcObject = null;
   }
 
-   async addStreamToConnection(){
-
+   async addStreamToConnection() {
 
      this.p.addStream(this.stream);
 
-    //  for (const track of gumStream.getTracks()) {
-    // }
-    // this.p.addTrack(this.stream);
   }
 
-   async removeStreamFromConnection(){
+   async removeStreamFromConnection() {
 
      this.p.removeStream(this.stream);
 
-    //  for (const track of gumStream.getTracks()) {
-    // }
-    // this.p.addTrack(this.stream);
+  }
+
+  addAudioTrack() {
+    this.p.addTrack(this.stream.getAudioTracks(), this.stream);
   }
 }
