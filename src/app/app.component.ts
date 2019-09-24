@@ -95,7 +95,7 @@ export class AppComponent implements OnInit , AfterViewInit {
     //   .catch((handleError) => console.log(handleError));
 
     this.n.getUserMedia = (this.n.getUserMedia || this.n.webkitGetUserMedia || this.n.mozGetUserMedia || this.n.msGetUserMedia);
-    this.n.getUserMedia({ video: false, audio: true }, function(stream) {
+    this.n.getUserMedia({ video: true, audio: true }, function(stream) {
       that.stream = stream;
       // that.myVideo.nativeElement.srcObject = stream;
       // video.play();
@@ -122,6 +122,14 @@ export class AppComponent implements OnInit , AfterViewInit {
   }
 
   addAudioTrack() {
-    this.p.addTrack(this.stream.getAudioTracks(), this.stream);
+    this.p.addTrack(this.stream.getAudioTracks()[0], this.stream);
+  }
+
+  addVideoTrack() {
+    this.p.addTrack(this.stream.getVideoTracks()[0], this.stream);
+  }
+
+  removeVideoTrack() {
+    this.p.removeTrack(this.stream.getVideoTracks()[0], this.stream);
   }
 }
