@@ -1,16 +1,31 @@
-<form>
-  <textarea id="incoming"></textarea>
+<form (submit)="setOffer(offer.value, $event)">
+  Set Offer
+  <textarea #offer></textarea>
   <button type="submit">submit</button>
 </form>
-<textarea name="" id="" cols="30" rows="10" [(ngModel)]="msg"></textarea>
-<button (click)="send()">Send msg</button>
-<button (click)="turnOnCamera()">Turn On Camera</button>
-<button (click)="turnOfCamera()">Turn Off Camera</button>
-<button (click)="addStreamToConnection()">Add camera</button>
-<button (click)="removeStreamFromConnection()">Remove camera</button>
-<button (click)="addAudioTrack()">Add audio track</button>
-<button (click)="addVideoTrack()">Add video track</button>
-<button (click)="removeVideoTrack()">Remove video track</button>
-<pre id="outgoing"></pre>
+<form (submit)="setAnswer(answer.value, $event)">
+  Set Answer
+  <textarea #answer></textarea>
+  <button type="submit">submit</button>
+</form>
+<div>
+  <button (click)="turnOnCamera()">Turn On Camera</button>
+  <button (click)="turnOfCamera()">Turn Off Camera</button>
+  <button (click)="addStreamToConnection()">Add camera</button>
+  <button (click)="removeStreamFromConnection()">Remove camera</button>
+  <button (click)="addAudioTrack()">Add audio track</button>
+  <button (click)="addVideoTrack()">Add video track</button>
+  <button (click)="removeVideoTrack()">Remove video track</button>
+</div>
+<div>{{ outgoing }}</div>
 
-<video #myvideo></video>
+<div style="width: 100%; display: flex;">
+  <div *ngIf="stream">
+    My video video
+    <video [srcObject]="stream" autoplay></video>
+  </div>
+  <div *ngIf="remoteStream">
+    Remote video
+    <video [srcObject]="remoteStream" autoplay></video>
+  </div>
+</div>
