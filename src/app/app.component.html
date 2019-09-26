@@ -1,3 +1,5 @@
+
+
 <form (submit)="setOffer(offer.value, $event)">
   Set Offer
   <textarea #offer></textarea>
@@ -20,12 +22,16 @@
 <div>{{ outgoing }}</div>
 
 <div style="width: 100%; display: flex;">
-  <div *ngIf="stream">
-    My video video
-    <video [srcObject]="stream" autoplay></video>
-  </div>
+<!--  <div *ngIf="stream">-->
+<!--    My video video-->
+<!--    <video [srcObject]="stream" autoplay></video>-->
+<!--  </div>-->
   <div *ngIf="remoteStream">
     Remote video
     <video [srcObject]="remoteStream" autoplay></video>
   </div>
+<!--  <div *ngIf="desktop">-->
+<!--    Desktop-->
+<!--    <video [srcObject]="desktop" autoplay></video>-->
+<!--  </div>-->
 </div>

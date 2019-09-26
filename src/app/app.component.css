@@ -3,3 +3,8 @@
   word-wrap: break-word;
   white-space: normal;
 }
+
+textarea {
+  width: 300px;
+  height: 300px;
+}

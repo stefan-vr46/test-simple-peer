@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
-import { BetterSimplePeer } from './better-simple-peer';
-import { getUserMedia } from './media-helpers';
+import {BetterSimplePeer} from "./better-simple-peer";
+import {getUserMedia} from "./media-helpers";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +9,14 @@ import { getUserMedia } from './media-helpers';
 })
 export class AppComponent implements AfterViewInit {
   outgoing: string;
+  desktop: any = null;
   title = 'simple-peer-test';
   msg = 'test';
   stream: MediaStream;
   remoteStream: MediaStream;
   peer: BetterSimplePeer;
-  newPeer: BetterSimplePeer;
+  newPeer;
+
 
   ngAfterViewInit(): void {
     const isInitiator = location.hash === '#1';
@@ -107,4 +109,5 @@ export class AppComponent implements AfterViewInit {
   removeVideoTrack() {
     this.peer.removeTrack(this.stream.getVideoTracks()[0], this.stream);
   }
+
 }
