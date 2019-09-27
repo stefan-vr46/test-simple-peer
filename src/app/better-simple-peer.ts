@@ -24,6 +24,10 @@ export class BetterSimplePeer {
     return fromEvent(this.peer, 'tracks');
   }
 
+  msg$() {
+    return fromEvent(this.peer, 'data');
+  }
+
   stream$(): Observable<MediaStream> {
     return fromEvent(this.peer, 'stream');
   }

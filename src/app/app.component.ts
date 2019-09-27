@@ -41,6 +41,13 @@ export class AppComponent implements AfterViewInit {
     peer.error$().subscribe(error => console.log({ error }));
     peer.connect$().subscribe(connect => console.log({ connect }));
     peer.tracks$().subscribe(trackData => console.log({ trackData }));
+    peer.msg$().subscribe(trackData => {
+      const msg = '' + trackData;
+      console.log(msg );
+    });
+    // peer.peer.on('data', data => {
+    //   console.log('data: ' + data)
+    // });
 
     peer.stream$().subscribe(stream => {
       console.log({ stream });
