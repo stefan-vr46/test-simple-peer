@@ -12,6 +12,10 @@ export class BetterSimplePeer {
     });
   }
 
+  sendMsg(msg) {
+    this.peer.send(msg);
+  }
+
   setSdp(sdp) {
     this.peer.signal(sdp);
   }
